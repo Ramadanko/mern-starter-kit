@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "A starter kit for mern stack with sample project + authentication",
   "main": "src/index.js",
-  "scripts": {},
+  "scripts": {
+    "start": "nodemon --require dotenv/config src/index.js --exec babel-node | bunyan"
+  },
   "keywords": [
     "nodejs",
     "react",
