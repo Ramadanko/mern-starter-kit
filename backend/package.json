@@ -4,7 +4,9 @@
   "description": "A starter kit for mern stack with sample project + authentication",
   "main": "src/index.js",
   "scripts": {
-    "start": "nodemon --require dotenv/config src/index.js --exec babel-node | bunyan"
+    "start": "nodemon --require dotenv/config src/index.js --exec babel-node | bunyan",
+    "standard": "standard  src/**/*.js --verbose | snazzy",
+    "fix": "standard --fix"
   },
   "keywords": [
     "nodejs",
@@ -19,7 +21,10 @@
     "@babel/core": "^7.10.5",
     "@babel/node": "^7.10.5",
     "@babel/preset-env": "^7.10.4",
-    "nodemon": "^2.0.4"
+    "babel-eslint": "^10.1.0",
+    "nodemon": "^2.0.4",
+    "snazzy": "^8.0.0",
+    "standard": "^14.3.4"
   },
   "dependencies": {
     "bcrypt": "^5.0.0",
@@ -38,5 +43,12 @@
     "morgan": "^1.10.0",
     "sanitize-html": "^1.27.1",
     "serve-favicon": "^2.5.0"
+  },
+  "standard": {
+    "ignore": [
+      "build",
+      "src/index.js"
+    ],
+    "parser": "babel-eslint"
   }
 }
