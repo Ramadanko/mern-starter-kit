@@ -12,8 +12,8 @@ const create = async (req, res) => {
     })
     const savedUser = await user.save()
     if (savedUser) {
-      const token = generateJWT(user)
-      return res.json({ user, token })
+      const { token, expiresAt } = generateJWT(user)
+      return res.json({ user, token, expiresAt })
     }
   } catch (error) {
     return res.status(400).send({ error })
