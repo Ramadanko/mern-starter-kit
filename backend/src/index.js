@@ -4,11 +4,15 @@ import express from 'express'
 import cluster from 'cluster'
 import config from './config/config.js'
 import startDatabase from './config/database'
+import Middleware from 'backend/src/utilities/App/Middleware'
 
 const CPUs = os.cpus().length
 const log = config[process.env.NODE_ENV || 'development'].log
 const app = express()
 const server = http.createServer(app)
+
+// set up application middleware
+Middleware(app);
 
 // Global error handler
 app.use((err, req, res, next) => {
