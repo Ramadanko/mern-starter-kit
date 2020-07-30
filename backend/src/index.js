@@ -4,7 +4,8 @@ import express from 'express'
 import cluster from 'cluster'
 import config from './config/config.js'
 import startDatabase from './config/database'
-import Middleware from 'backend/src/utilities/App/Middleware'
+import Middleware from './utilities/App/Middleware'
+import Routes from './utilities/App/Routes'
 
 const CPUs = os.cpus().length
 const log = config[process.env.NODE_ENV || 'development'].log
@@ -13,7 +14,8 @@ const server = http.createServer(app)
 
 // set up application middleware
 Middleware(app);
-
+// set up application routes
+Routes(app);
 // Global error handler
 app.use((err, req, res, next) => {
   const status = err.status || 404
