@@ -4,6 +4,6 @@ import { create } from './UserController'
 
 const router = express.Router()
 
-router.post('/create', validationsArray, create)
+router.post('/user/create', validationsArray, create)
 
 export default router

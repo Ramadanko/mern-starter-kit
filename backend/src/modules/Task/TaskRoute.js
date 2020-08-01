@@ -4,11 +4,11 @@ import { taskUpdateValidations, taskCreateValidations } from './TaskValidations'
 
 const router = express.Router()
 
-router.route('/Task')
+router.route('/task')
   .post(taskCreateValidations, task.create)
   .get(task.read)
 
-router.route('/Task/:id')
+router.route('/task/:id')
   .get(task.getById)
   .put((req, res, next) => {
     return next()
