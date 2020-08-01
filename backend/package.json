@@ -47,7 +47,8 @@
   "standard": {
     "ignore": [
       "build",
-      "src/index.js"
+      "src/index.js",
+      "src/utilities/functions.js"
     ],
     "parser": "babel-eslint"
   }
