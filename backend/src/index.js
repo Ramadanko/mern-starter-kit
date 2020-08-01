@@ -4,8 +4,8 @@ import express from 'express'
 import cluster from 'cluster'
 import config from './config/config.js'
 import startDatabase from './config/database'
-import Middleware from './utilities/App/Middleware'
-import Routes from './utilities/App/Routes'
+import Middleware from './App/Middleware'
+import Routes from './App/Routes'
 
 const CPUs = os.cpus().length
 const log = config[process.env.NODE_ENV || 'development'].log
