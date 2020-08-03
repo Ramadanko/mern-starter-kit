@@ -5,13 +5,13 @@ import * as serviceWorker from './serviceWorker'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 const App = loadable(() => import('./components/App/App'))
-const Login = loadable( ()=> import('./components/Login/Login'))
+const Login = loadable(() => import('./components/Login/Login'))
 
 ReactDOM.render(
   <Router>
     <Switch>
-      <Route path="/login"><Login/></Route>
-      <Route path="/"><App/></Route>
+      <Route path='/login'><Login /></Route>
+      <Route path='/'><App /></Route>
     </Switch>
   </Router>,
   document.getElementById('root')
