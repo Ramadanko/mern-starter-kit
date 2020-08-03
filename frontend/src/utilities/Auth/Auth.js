@@ -1,5 +1,4 @@
 class Auth {
-
   constructor () {
     this.loggedIn = false
     this.redirectedUrl = false
@@ -13,7 +12,7 @@ class Auth {
       fetch(loginUrl, {
         method: 'POST',
         headers: {
-          'Accept': 'application/json',
+          Accept: 'application/json',
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
@@ -65,6 +64,6 @@ class Auth {
   }
 }
 
-let auth = new Auth()
+const auth = new Auth()
 
 export default auth
