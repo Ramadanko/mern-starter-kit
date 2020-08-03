@@ -7,23 +7,16 @@ const useStyles = makeStyles((theme) => ({
   backdrop: {
     zIndex: theme.zIndex.drawer + 1,
     color: '#fff',
+    background: 'transparent'
   },
 }))
 
 export default () => {
   const classes = useStyles()
-  const [open, setOpen] = React.useState(false)
-  const handleClose = () => {
-    setOpen(false)
-  }
-  const handleToggle = () => {
-    setOpen(!open)
-  }
-
   return (
     <div>
-      <Backdrop className={classes.backdrop} open={open} onClick={handleClose}>
-        <CircularProgress color="inherit"/>
+      <Backdrop className={classes.backdrop} open={true}>
+        <CircularProgress size={60}/>
       </Backdrop>
     </div>
   )
