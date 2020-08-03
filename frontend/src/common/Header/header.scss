@@ -1,0 +1,67 @@
+.top-header {
+
+  flex-grow: 1;
+
+  .toolbar-custom {
+    min-height: auto;
+
+    @media all and (max-width: 600px) {
+      display: block;
+      padding: 0;
+    }
+  }
+
+  .page-logo {
+    display: inline-block;
+    margin-right: 10px;
+  }
+
+  .toggle-top-level-links {
+    @media all and (min-width: 600px) {
+      display: none;
+    }
+  }
+
+  .top-level-links {
+
+    @media all and (max-width: 600px) {
+      a {
+        width: 100%
+      }
+    }
+
+    a {
+      text-decoration: none;
+      color: #fff;
+      display: block;
+      padding: 15px;
+
+      &.selected {
+        background: #fff;
+        color: #333;
+      }
+    }
+  }
+
+  .spacer {
+    flex-grow: 1
+  }
+
+  .header-icons {
+    @media all and (max-width: 600px) {
+      position: absolute;
+      top: 0;
+      right: 0;
+    ;
+    }
+  }
+
+}
+
+.avatar-menu {
+
+  a{
+    text-decoration: none;
+    color: inherit;
+  }
+}
