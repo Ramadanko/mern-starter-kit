@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import {
   Select,
-  MenuItem
+  MenuItem,
+  InputLabel,
+  Grid
 } from '@material-ui/core'
 import queryString from 'query-string'
 import { useHistory } from 'react-router-dom'
+import ImportExportIcon from '@material-ui/icons/ImportExport'
+
 
 const options = [
   { name: "Date added (oldest)", value: 'createdAt' },
@@ -29,16 +33,22 @@ export default () => {
   }
 
   return (
-    <Select id="sortBy" value={sortBy} onChange={updateQueryString}>
-      {
-        options.map((item, index) => {
-          return (
-            <MenuItem key={index} value={item.value}>
-              {item.name}
-            </MenuItem>
-          )
-        })
-      }
-    </Select>
+    <Grid container alignItems="center" spacing={1}>
+      <Grid item><ImportExportIcon/></Grid>
+      <Grid item><InputLabel htmlFor="sortBy" >Sort By:</InputLabel></Grid>
+      <Grid item>
+        <Select id="sortBy" value={sortBy} onChange={updateQueryString}>
+          {
+            options.map((item, index) => {
+              return (
+                <MenuItem key={index} value={item.value}>
+                  {item.name}
+                </MenuItem>
+              )
+            })
+          }
+        </Select>
+      </Grid>
+    </Grid>
   )
 }
