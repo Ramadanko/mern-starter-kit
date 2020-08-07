@@ -7,6 +7,7 @@ export const setTaskCount = (count) => ({ type: actions.SET_TASK_COUNT, payload:
 export const getTaskByIdSuccess = (task) => ({ type: actions.GET_TASK_BY_ID, payload: task })
 export const creteTaskSuccess = (task) => ({ type: actions.CREATE_TASK, payload: task })
 export const updateTaskSuccess = (task) => ({ type: actions.UPDATE_TASK, payload: task })
+export const deleteTaskSuccess = (id) => ({ type: actions.DELETE_TASK, payload: id })
 
 export const getTasks = (queryString) => {
   return async (dispatch) => {
@@ -53,5 +54,16 @@ export const saveTask = task => {
         apiCallError()
       }
     }
+  }
+}
+
+export const deleteTask = (id) => {
+  return (dispatch) => {
+    return taskApi.deleteTask(id).then(message => {
+      dispatch(deleteTaskSuccess(id))
+      return message;
+    }).catch(err => {
+      apiCallError();
+    })
   }
 }
