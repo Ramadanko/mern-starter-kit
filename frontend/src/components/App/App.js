@@ -27,6 +27,7 @@ function App () {
       </Helmet>
       <CssBaseline />
       <Header />
+      <br/>
       <Container maxWidth={false} className='main-content'>
         <Switch>
           <Route exact path='/'> <Home /></Route>

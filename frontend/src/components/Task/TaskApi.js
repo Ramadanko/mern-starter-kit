@@ -9,3 +9,11 @@ export const getTasks = (queryString) => {
 export const getTaskById = (id) => {
   return axios.get(apiEndpoints.task + `/${id}`)
 }
+
+export const createTask = (task) => {
+  return axios.post(apiEndpoints.task, task)
+}
+
+export const updateTask = (task) => {
+  return axios.put(apiEndpoints.task + `/${task._id}`, task)
+}

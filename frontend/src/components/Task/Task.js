@@ -10,7 +10,7 @@ import SortBy from '../../common/SortBy/SortBy';
 import LimitResult from '../../common/LimitResult/LimitResult'
 import queryString from 'query-string'
 import BackdropLoader from '../../common/BackdropLoader/BackdropLoader'
-import Grid from '@material-ui/core/Grid'
+import { Grid, Typography } from '@material-ui/core'
 
 const Task = ({ tasks, taskCount, loading, actions, ...props }) => {
 
@@ -35,11 +35,19 @@ const Task = ({ tasks, taskCount, loading, actions, ...props }) => {
     actions.deleteTask(id);
   }
 
+  const handleNewTask = ()=>{
+    history.push('/task/create')
+  }
+
   return (
     loading ?
       <BackdropLoader /> :
       <>
-        <h1>All Tasks</h1>
+        <div>
+          <Typography variant="h3" gutterBottom>
+            All Tasks <Typography variant="caption" gutterBottom onClick={handleNewTask} style={{cursor: 'pointer'}}>New Task</Typography>
+          </Typography>
+        </div>
         <Grid container spacing={2} alignItems="center" justify="flex-end">
           <Grid item><SortBy /></Grid>
           <Grid item><LimitResult /></Grid>
