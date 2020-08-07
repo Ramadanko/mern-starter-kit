@@ -106,7 +106,7 @@ export default ({ errors, handleSubmit, handleEmail, handlePassword, saving, ...
           >
             Sign In
           </Button>
-          {saving && <LinearProgress />}
+          {saving ?  <LinearProgress /> : null}
         </form>
       </div>
       <Box mt={8}>

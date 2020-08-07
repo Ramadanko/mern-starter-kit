@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Auth from '../../utilities/Auth/Auth'
 import { Redirect } from 'react-router-dom'
 import apiEndpoints from '../../common/Api/ApiEndpoints'
-import validator from 'validator'
+import {isEmail, isEmpty} from 'validator'
 import LoginUI from './LoginUI'
 
 const Login = () => {
@@ -23,11 +23,11 @@ const Login = () => {
 
   const isFormValid = () => {
     const errors = {}
-    if (!validator.isEmail(email)) {
+    if (!isEmail(email)) {
       errors.email = 'Please enter a valid Email address.'
     }
 
-    if (validator.isEmpty(password)) {
+    if (isEmpty(password)) {
       errors.password = 'Invalid password.'
     }
     setErrors(errors)
