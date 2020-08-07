@@ -3,17 +3,23 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import * as serviceWorker from './serviceWorker'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { Provider as ReduxProvider } from 'react-redux'
+import createStore from './redux/store'
+
+const store = createStore({});
 
 const App = loadable(() => import('./components/App/App'))
 const Login = loadable(() => import('./components/Login/Login'))
 
 ReactDOM.render(
-  <Router>
-    <Switch>
-      <Route path='/login'><Login /></Route>
-      <Route path='/'><App /></Route>
-    </Switch>
-  </Router>,
+  <ReduxProvider store={store}>
+    <Router>
+      <Switch>
+        <Route path='/login'><Login /></Route>
+        <Route path='/'><App /></Route>
+      </Switch>
+    </Router>
+  </ReduxProvider>,
   document.getElementById('root')
 )
 

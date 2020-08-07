@@ -1,3 +1,4 @@
 export default {
-  login: '/api/auth/login'
+  login: '/api/auth/login',
+  task: '/api/task'
 }
