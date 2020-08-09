@@ -11,6 +11,6 @@ export default (app) => {
   app.use('/api', UserRoutes)
   app.use('/api', TaskRoute)
   app.get('/*', (req, res) => {
-    return res.sendFile(path.resolve(__dirname, '../../../frontend/build/index.html'))
+    return res.sendFile(path.resolve(__dirname, '../../frontend/build/index.html'))
   });
 }
