@@ -8,7 +8,7 @@
     "standard": "standard  src/**/*.js --verbose | snazzy",
     "fix": "standard --fix",
     "build": "npx babel src --out-dir build",
-    "prestart": "npm run build",
+    "prestart": "npx babel src --out-dir build",
     "start": "node --require dotenv/config build/index.js"
   },
   "keywords": [
