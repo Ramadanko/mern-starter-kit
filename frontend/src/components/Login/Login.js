@@ -7,8 +7,8 @@ import LoginUI from './LoginUI'
 
 const Login = () => {
   const [url, setUrl] = useState('/')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [email, setEmail] = useState('mohammed.ramadanko@gmail.com')
+  const [password, setPassword] = useState('password')
   const [isLoggedIn, setLoggedIn] = useState(false)
   const [errors, setErrors] = useState({})
   const [saving, setSaving] = useState(false)
@@ -59,7 +59,8 @@ const Login = () => {
       {
         isLoggedIn
           ? <Redirect to={url} />
-          : <LoginUI errors={errors} handleSubmit={handleSubmit} handleEmail={handleEmail} handlePassword={handlePassword} saving={saving} />
+          : <LoginUI errors={errors} handleSubmit={handleSubmit} handleEmail={handleEmail}
+                     handlePassword={handlePassword} saving={saving} email={email} password={password} />
       }
     </>
   )
