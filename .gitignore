@@ -2,5 +2,5 @@
 /**/*.iml
 /**/.env
 /**/node_modules
-/**/build
+/build
 

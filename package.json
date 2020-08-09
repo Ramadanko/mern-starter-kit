@@ -4,11 +4,12 @@
   "description": "A starter kit for mern stack with sample project + authentication",
   "main": "src/index.js",
   "scripts": {
-    "start": "nodemon --require dotenv/config src/index.js --exec babel-node | bunyan",
+    "dev": "nodemon --require dotenv/config src/index.js --exec babel-node | bunyan",
     "standard": "standard  src/**/*.js --verbose | snazzy",
     "fix": "standard --fix",
     "build": "npx babel src --out-dir build",
-    "prod": "node --require dotenv/config build/index.js"
+    "prestart": "npm run build",
+    "start": "node --require dotenv/config build/index.js"
   },
   "keywords": [
     "nodejs",
