@@ -32,7 +32,10 @@ const Task = ({ tasks, taskCount, loading, actions, ...props }) => {
   }
 
   const remove = (id) => {
-    actions.deleteTask(id);
+    actions.deleteTask(id)
+      .then( res =>{
+
+      });
   }
 
   const handleNewTask = ()=>{
@@ -48,7 +51,7 @@ const Task = ({ tasks, taskCount, loading, actions, ...props }) => {
             All Tasks <Typography variant="caption" gutterBottom onClick={handleNewTask} style={{cursor: 'pointer'}}>New Task</Typography>
           </Typography>
         </div>
-        <Grid container spacing={2} alignItems="center" justify="flex-end">
+        <Grid container spacing={2} alignItems="center" justify="flex-end" className="filters-wrapper">
           <Grid item><SortBy /></Grid>
           <Grid item><LimitResult /></Grid>
         </Grid>

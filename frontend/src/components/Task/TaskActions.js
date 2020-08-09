@@ -59,9 +59,9 @@ export const saveTask = task => {
 
 export const deleteTask = (id) => {
   return (dispatch) => {
-    return taskApi.deleteTask(id).then(message => {
+    return taskApi.deleteTask(id).then(res => {
       dispatch(deleteTaskSuccess(id))
-      return message;
+      return res;
     }).catch(err => {
       apiCallError();
     })

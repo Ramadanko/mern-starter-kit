@@ -9,3 +9,31 @@
     }
   }
 }
+
+.filters-wrapper {
+  margin-bottom: 15px;
+}
+
+.TaskList {
+
+  .card-item {
+    margin-bottom: 15px;
+  }
+}
+
+.custom-badge {
+  margin-left: 5px;
+  padding: 1px 8px;
+  border-radius: 5px;
+  display: inline-block;
+  &.open {
+    background: #b0bec5;
+  }
+  &.in-progress {
+    background: #fdd835;
+  }
+  &.done{
+    color: #fff;
+    background: #388e3c;
+  }
+}
