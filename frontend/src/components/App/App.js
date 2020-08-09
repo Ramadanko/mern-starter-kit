@@ -28,7 +28,7 @@ function App () {
       <CssBaseline />
       <Header />
       <br/>
-      <Container maxWidth={false} className='main-content'>
+      <Container maxWidth={false} className='main-content' style={{marginBottom: '30px'}}>
         <Switch>
           <Route exact path='/'> <Home /></Route>
           <Route path='/task'> <TaskRoute /></Route>

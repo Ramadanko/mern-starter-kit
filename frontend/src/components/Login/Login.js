@@ -2,13 +2,13 @@ import React, { useState } from 'react'
 import Auth from '../../utilities/Auth/Auth'
 import { Redirect } from 'react-router-dom'
 import apiEndpoints from '../../common/Api/ApiEndpoints'
-import validator from 'validator'
+import {isEmail, isEmpty} from 'validator'
 import LoginUI from './LoginUI'
 
 const Login = () => {
   const [url, setUrl] = useState('/')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [email, setEmail] = useState('mohammed.ramadanko@gmail.com')
+  const [password, setPassword] = useState('password')
   const [isLoggedIn, setLoggedIn] = useState(false)
   const [errors, setErrors] = useState({})
   const [saving, setSaving] = useState(false)
@@ -23,11 +23,11 @@ const Login = () => {
 
   const isFormValid = () => {
     const errors = {}
-    if (!validator.isEmail(email)) {
+    if (!isEmail(email)) {
       errors.email = 'Please enter a valid Email address.'
     }
 
-    if (validator.isEmpty(password)) {
+    if (isEmpty(password)) {
       errors.password = 'Invalid password.'
     }
     setErrors(errors)
@@ -59,7 +59,8 @@ const Login = () => {
       {
         isLoggedIn
           ? <Redirect to={url} />
-          : <LoginUI errors={errors} handleSubmit={handleSubmit} handleEmail={handleEmail} handlePassword={handlePassword} saving={saving} />
+          : <LoginUI errors={errors} handleSubmit={handleSubmit} handleEmail={handleEmail}
+                     handlePassword={handlePassword} saving={saving} email={email} password={password} />
       }
     </>
   )

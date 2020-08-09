@@ -50,7 +50,7 @@ function Copyright () {
   )
 }
 
-export default ({ errors, handleSubmit, handleEmail, handlePassword, saving, ...props }) => {
+export default ({ errors, handleSubmit, handleEmail, handlePassword, saving, email, password, ...props }) => {
   const classes = useStyles()
   return (
     <Container component='main' maxWidth='xs'>
@@ -81,6 +81,7 @@ export default ({ errors, handleSubmit, handleEmail, handlePassword, saving, ...
             onChange={handleEmail}
             error={!!errors.email}
             helperText={errors.email}
+            value={email}
           />
           <TextField
             variant='outlined'
@@ -95,6 +96,7 @@ export default ({ errors, handleSubmit, handleEmail, handlePassword, saving, ...
             onChange={handlePassword}
             error={!!errors.password}
             helperText={errors.password}
+            value={password}
           />
           <Button
             type='submit'
@@ -106,7 +108,7 @@ export default ({ errors, handleSubmit, handleEmail, handlePassword, saving, ...
           >
             Sign In
           </Button>
-          {saving && <LinearProgress />}
+          {saving ?  <LinearProgress /> : null}
         </form>
       </div>
       <Box mt={8}>

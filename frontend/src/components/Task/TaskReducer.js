@@ -11,6 +11,8 @@ export default (state = initialState.tasks, action) => {
     return state.length > 0 ? [...state, action.payload] : [action.payload]
   case taskActionTypes.UPDATE_TASK:
     return state.map(item => (item._id === action.payload._id ? { ...action.payload } : item))
+  case taskActionTypes.DELETE_TASK:
+    return state.filter(item => item._id !== action.payload)
   default:
     return state;
   }
