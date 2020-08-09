@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import configurations from '../config/config.js'
+import configurations from './config.js'
 
 const config = configurations[process.env.NODE_ENV || 'development']
 
