@@ -1,17 +1,15 @@
 import Task from './TaskModel'
 import { validationResult } from 'express-validator'
-import { buildObjectToSave } from '../../utilities/functions'
+import { buildObjectToSave, defaultFilter } from '../../utilities/functions'
 
 const read = async (req, res) => {
+  const { page, limit, sortBy } = defaultFilter(req.query)
   try {
-    const page = req.query.page ? parseInt(req.query.page) - 1 : 0
-    const limit = req.query.limit ? parseInt(req.query.limit) : 10
-    const sortBy = req.query.sortBy ? req.query.sortBy : 'createdAt'
     const count = await Task.estimatedDocumentCount()
     const allTask = await Task.find({}).limit(limit).skip(limit * page).sort(sortBy)
     return res.json({ items: allTask, count })
   } catch (error) {
-    return res.status(404).json({ message: "Couldn't retrieve items from database" })
+    return res.status(404).json({ message: "Couldn't retrieve items from database", error })
   }
 }
 
@@ -58,6 +56,18 @@ const remove = async (req, res) => {
   }
 }
 
+const status = async (req, res) => {
+  try {
+    const count = await Task.estimatedDocumentCount()
+    const open = await Task.count({ 'status': 'open' });
+    const done = await Task.count({ 'status': 'done' });
+    const inProgress = await Task.count({ 'status': 'in-progress' });
+    return res.json({ items: { open, done, inProgress, count } })
+  } catch (error) {
+    return res.json(error)
+  }
+}
+
 // TODO search later
 // const search = async (req, res) => {
 //
@@ -68,5 +78,6 @@ export {
   getById,
   create,
   update,
-  remove
+  remove,
+  status
 }
