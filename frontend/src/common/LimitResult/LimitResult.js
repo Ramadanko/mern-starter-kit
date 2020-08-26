@@ -18,7 +18,7 @@ const options = [
   { name: '100', value: '100' }
 ]
 
-export default () => {
+export default ({ callback }) => {
 
   let history = useHistory()
   let params = queryString.parse(history.location.search)
@@ -31,6 +31,7 @@ export default () => {
     queryStringObject.limit = value
     let parsedQueryString = queryString.stringify(queryStringObject)
     history.push({ search: parsedQueryString })
+    callback()
   }
 
   return (

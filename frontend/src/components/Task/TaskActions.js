@@ -10,14 +10,17 @@ export const updateTaskSuccess = (task) => ({ type: actions.UPDATE_TASK, payload
 export const deleteTaskSuccess = (id) => ({ type: actions.DELETE_TASK, payload: id })
 
 export const getTasks = (queryString) => {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     dispatch(beginApiCall())
     try {
+      let { count } = getState()
       let response = await taskApi.getTasks(queryString)
       dispatch(getTasksSuccess(response.data.items))
-      dispatch(setTaskCount(response.data.count))
+      if (response.data.count !== count)
+        dispatch(setTaskCount(response.data.count))
     } catch (error) {
-      apiCallError()
+      dispatch(apiCallError(error))
+      throw error
     }
   }
 }
@@ -29,7 +32,8 @@ export const getTaskById = (id) => {
       let response = await taskApi.getTaskById(id)
       dispatch(getTaskByIdSuccess(response.data.item))
     } catch (error) {
-      apiCallError()
+      dispatch(apiCallError(error))
+      throw error
     }
   }
 }
@@ -43,7 +47,8 @@ export const saveTask = task => {
         dispatch(updateTaskSuccess(response.data.item))
         return response.data.item
       } catch (error) {
-        apiCallError()
+        dispatch(apiCallError(error))
+        throw error
       }
     } else {
       try {
@@ -51,7 +56,8 @@ export const saveTask = task => {
         dispatch(creteTaskSuccess(response.data.item))
         return response.data.item
       } catch (error) {
-        apiCallError()
+        dispatch(apiCallError(error))
+        throw error
       }
     }
   }
@@ -62,8 +68,9 @@ export const deleteTask = (id) => {
     return taskApi.deleteTask(id).then(res => {
       dispatch(deleteTaskSuccess(id))
       return res;
-    }).catch(err => {
-      apiCallError();
+    }).catch(error => {
+      dispatch(apiCallError(error))
+      throw error;
     })
   }
 }

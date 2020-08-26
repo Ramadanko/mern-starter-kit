@@ -1,5 +1,7 @@
 export default {
-  tasks: [],
-  taskCount: 0,
+  tasks: {
+    items: [],
+    taskCount: 0,
+  },
   apiCallInProgress: 0
 }
