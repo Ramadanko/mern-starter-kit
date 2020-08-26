@@ -3,7 +3,7 @@ import Pagination from '@material-ui/lab/Pagination'
 import queryString from 'query-string'
 import { useHistory } from 'react-router-dom'
 
-const Paging = ({ count }) => {
+const Paging = ({ count, callback }) => {
 
   let history = useHistory()
   let params = queryString.parse(history.location.search)
@@ -14,12 +14,13 @@ const Paging = ({ count }) => {
     queryStringObject.page = value
     let parsedQueryString = queryString.stringify(queryStringObject)
     history.push({ search: parsedQueryString })
+    callback()
   }
 
   return (
     count > 1 ?
       <Pagination color="secondary" shape="rounded" size="small"
-                  id="pagination" count={count} defaultPage={defaultPage} onChange={updateQueryString}/> :
+        id="pagination" count={count} defaultPage={defaultPage} onChange={updateQueryString} /> :
       null
   )
 }

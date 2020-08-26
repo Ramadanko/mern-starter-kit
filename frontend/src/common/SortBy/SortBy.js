@@ -17,7 +17,7 @@ const options = [
   { name: "Title (z-a)", value: '-title' }
 ]
 
-export default () => {
+export default ({ callback }) => {
 
   let history = useHistory();
   let params = queryString.parse(history.location.search);
@@ -30,11 +30,12 @@ export default () => {
     queryStringObject.sortBy = value;
     let parsedQueryString = queryString.stringify(queryStringObject)
     history.push({ search: parsedQueryString })
+    callback()
   }
 
   return (
     <Grid container alignItems="center" spacing={1}>
-      <Grid item><ImportExportIcon/></Grid>
+      <Grid item><ImportExportIcon /></Grid>
       <Grid item><InputLabel htmlFor="sortBy" >Sort By:</InputLabel></Grid>
       <Grid item>
         <Select id="sortBy" value={sortBy} onChange={updateQueryString}>
