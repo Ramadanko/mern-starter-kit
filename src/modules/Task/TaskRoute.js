@@ -4,6 +4,9 @@ import { taskUpdateValidations, taskCreateValidations } from './TaskValidations'
 
 const router = express.Router()
 
+router.route('/task/status')
+  .get(task.status)
+
 router.route('/task')
   .post(taskCreateValidations, task.create)
   .get(task.read)
@@ -14,5 +17,7 @@ router.route('/task/:id')
     return next()
   }, taskUpdateValidations, task.update)
   .delete(task.remove)
+
+
 
 export default router
