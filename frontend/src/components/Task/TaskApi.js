@@ -21,3 +21,7 @@ export const updateTask = (task) => {
 export const deleteTask = (id) => {
   return axios.delete(apiEndpoints.task + `/${id}`)
 }
+
+export const getTasksStatus = () => {
+  return axios.get(apiEndpoints.task + '/status')
+}
