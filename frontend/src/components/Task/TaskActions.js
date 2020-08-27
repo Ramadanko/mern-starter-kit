@@ -13,10 +13,10 @@ export const getTasks = (queryString) => {
   return async (dispatch, getState) => {
     dispatch(beginApiCall())
     try {
-      let { count } = getState()
+      let { task } = getState()
       let response = await taskApi.getTasks(queryString)
       dispatch(getTasksSuccess(response.data.items))
-      if (response.data.count !== count)
+      if (response.data.count !== task.count)
         dispatch(setTaskCount(response.data.count))
     } catch (error) {
       dispatch(apiCallError(error))

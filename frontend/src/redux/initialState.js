@@ -1,5 +1,5 @@
 export default {
-  tasks: {
+  task: {
     items: [],
     taskCount: 0,
   },

@@ -1,7 +1,7 @@
 import taskActionTypes from './TaskConstants'
 import initialState from '../../redux/initialState'
 
-export const tasks = (state = initialState.tasks.items, action) => {
+export const tasks = (state = initialState.task.items, action) => {
   switch (action.type) {
     case taskActionTypes.READ_TASKS:
       return [...action.payload];
@@ -18,7 +18,7 @@ export const tasks = (state = initialState.tasks.items, action) => {
   }
 }
 
-export const taskCount = (state = initialState.tasks.taskCount, action) => {
+export const taskCount = (state = initialState.task.taskCount, action) => {
   if (action.type === taskActionTypes.SET_TASK_COUNT) {
     return action.payload
   }
