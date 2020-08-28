@@ -14,7 +14,7 @@ const TaskDetail = ({ id, task, actions }) => {
         console.log('error ===>', error)
       })
     }
-  },[length, actions, id])
+  }, [length, actions, id])
 
   return (
     task && Object.keys(task).length ?
@@ -36,7 +36,7 @@ TaskDetail.propTypes = {
 const mapStateToProps = (state, prevProps) => {
   const id = prevProps.match.params.id;
   // TODO: replace with redux selectors
-  const task = state.tasks.length > 0 ? state.tasks.find(item => item && item._id === id) : {};
+  const task = state.task.items.length > 0 ? state.task.items.find(item => item && item._id === id) : {};
   return { task, id }
 }
 

@@ -75,11 +75,11 @@ Task.propTypes = {
   history: PropTypes.object.isRequired
 };
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = ({ task, apiCallInProgress }, ownProps) => {
   return {
-    tasks: state.tasks.items ? state.tasks.items : [],
-    taskCount: state.tasks.taskCount,
-    loading: state.apiCallInProgress > 0
+    tasks: task.items ? task.items : [],
+    taskCount: task.taskCount,
+    loading: apiCallInProgress > 0
   }
 };
 

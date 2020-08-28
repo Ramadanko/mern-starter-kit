@@ -3,7 +3,7 @@ import apiCallInProgress from '../common/Api/ApiReducer'
 import { tasks, taskCount } from '../components/Task/TaskReducer'
 
 const rootReducer = combineReducers({
-  tasks: combineReducers({
+  task: combineReducers({
     items: tasks,
     taskCount
   }),

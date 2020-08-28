@@ -36,7 +36,7 @@ const TaskForm = ({ taskStatusOptions, actions, ...props }) => {
       })
       .catch(err => {
         console.log('err', err)
-      }).finally( () => setSaving(true))
+      })
   }
 
   const handleChange = (e) => {
@@ -58,7 +58,7 @@ const TaskForm = ({ taskStatusOptions, actions, ...props }) => {
       errors.title = 'Title cannot be empty'
     }
 
-    if( !validateEditor(task.description) ){
+    if (!validateEditor(task.description)) {
       errors.description = "Invalid editor contents";
     }
 
@@ -85,7 +85,7 @@ const TaskForm = ({ taskStatusOptions, actions, ...props }) => {
       <form onSubmit={handleSubmit} noValidate autoComplete="off" className="task-form">
         <FormControl margin="dense" fullWidth error={!!errors.title}>
           <label htmlFor="title">Title</label>
-          <OutlinedInput required id='title' name='title' autoFocus onChange={handleChange} value={task.title}/>
+          <OutlinedInput required id='title' name='title' autoFocus onChange={handleChange} value={task.title} />
           {errors.title ? <FormHelperText>{errors.title}</FormHelperText> : null}
         </FormControl>
         <FormControl fullWidth>
@@ -97,12 +97,12 @@ const TaskForm = ({ taskStatusOptions, actions, ...props }) => {
           </Select>
         </FormControl>
         <FormControl fullWidth error={!!errors.description}>
-          <TinyMCE handleRteChange={handleRteChange} value={task.description}/>
+          <TinyMCE handleRteChange={handleRteChange} value={task.description} />
           {errors.description ? <FormHelperText>{errors.description}</FormHelperText> : null}
         </FormControl>
         <Button variant="contained" color="primary" type="submit" disabled={saving}>Save</Button>
-        <br/>
-        {saving ? <LinearProgress/> : null}
+        <br />
+        {saving ? <LinearProgress /> : null}
       </form>
     </>
   )
