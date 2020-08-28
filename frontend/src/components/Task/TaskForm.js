@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import * as taskActions from './TaskActions'
 import { useHistory } from 'react-router-dom'
@@ -23,11 +23,6 @@ const TaskForm = ({ taskStatusOptions, actions, ...props }) => {
   const [errors, setErrors] = useState({})
   const [saving, setSaving] = useState(false)
   let [task, setTask] = useState({ ...props.task })
-
-  useEffect(() => {
-    let _isMounted = true;
-    return () => { _isMounted = false };
-  }, [])
 
   const handleSubmit = (e) => {
     e.preventDefault()
