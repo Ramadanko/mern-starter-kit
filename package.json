@@ -42,7 +42,7 @@
     "express-validator": "^6.6.0",
     "helmet": "^3.23.3",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.9.26",
+    "mongoose": "5.12.0",
     "morgan": "^1.10.0",
     "sanitize-html": "^1.27.1",
     "serve-favicon": "^2.5.0"
